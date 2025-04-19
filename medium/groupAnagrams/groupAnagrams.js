@@ -2,14 +2,27 @@
 
 An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different. */
 
+//can do it sorted, or hashmaps
 class Solution {
 	/**
 	 * @param {string[]} strs
 	 * @return {string[][]}
 	 */
 	groupAnagrams(strs) {
-        
-    }
+		const anagramMap = {};
+        for (let word of strs) {
+            const count = new Array(26).fill(0);
+            for (let letter of word) {
+                count[letter.charCodeAt(0) - 'a'.charCodeAt(0)] += 1;
+            }
+            const key = count.join(',');
+            if (!anagramMap[key]) {
+                anagramMap[key] = [];
+            }
+            anagramMap[key].push(word);
+        }
+        return Object.values(anagramMap);
+	}
 }
 
 const test = new Solution();
