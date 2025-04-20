@@ -9,29 +9,20 @@ class Solution {
 	 * @return {string[][]}
 	 */
 	groupAnagrams(strs) {
-        const anagramMap = {};
-        for (let string of strs) {
-            const sortedString = string.split('').sort().join();
-            
-            if (!anagramMap[sortedString]) {
-                anagramMap[sortedString] = [];
-            } anagramMap[sortedString].push(string);
-        }
-        return Object.values(anagramMap)
-        // const anagramMap = {};
+		const anagramMap = {};
 
-		// for (let word of strs) {
-		// 	const count = new Array(26).fill(0);
-		// 	for (let letter of word) {
-		// 		count[letter.charCodeAt(0) - "a".charCodeAt(0)] += 1;
-		// 	}
-		// 	const key = count.join("");
-		// 	if (!anagramMap[key]) {
-		// 		anagramMap[key] = [];
-		// 	}
-		// 	anagramMap[key].push(word);
-		// }
-		// return Object.values(anagramMap);
+		for (let string of strs) {
+			const count = new Array(26).fill();
+			for (let letter of string) {
+				count[letter.charCodeAt(0) - "a".charCodeAt(0)] += 1;
+			}
+			const key = count.join(",");
+			if (!anagramMap[key]) {
+				anagramMap[key] = [];
+			}
+			anagramMap[key].push(string);
+		}
+		return Object.values(anagramMap);
 	}
 }
 
