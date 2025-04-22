@@ -4,15 +4,15 @@ class Solution {
      * @return {string[][]}
      */
     groupAnagrams(strs) {
-        const res = {};
-        for (let s of strs) {
-            const sortedS = s.split('').sort().join('');
-            if (!res[sortedS]) {
-                res[sortedS] = [];
+        const anagramMap = {};
+        for (let string of strs) {
+            const sortedS = string.split('').sort().join('');
+            if (!anagramMap[sortedS]) {
+                anagramMap[sortedS] = [];
             }
-            res[sortedS].push(s);
+            anagramMap[sortedS].push(string);
         }
-        return Object.values(res);
+        return Object.values(anagramMap);
     }
 
     groupAnagrams(strs) {

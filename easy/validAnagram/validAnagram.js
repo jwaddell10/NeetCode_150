@@ -10,6 +10,7 @@ class Solution {
 	 * @return {boolean}
 	 */
 	isAnagram(s, t) {
+		if (s.length !== t.length) return false;
 	}
 }
 
@@ -17,7 +18,7 @@ class Solution {
 
 const test = new Solution();
 
-console.log(test.isAnagram("racecar", "carrace")); //true
+console.log(test.isAnagram("racecar", "aaeccrr")); //true
 console.log(test.isAnagram("jar", "jam")); //false
 console.log(test.isAnagram("rattata", "attarta")); //true
 console.log(test.isAnagram("qwertyuiop", "poiuytrewf")); //false

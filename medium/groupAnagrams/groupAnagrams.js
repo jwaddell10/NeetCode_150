@@ -12,15 +12,11 @@ class Solution {
 		const anagramMap = {};
 
 		for (let string of strs) {
-			const count = new Array(26).fill();
-			for (let letter of string) {
-				count[letter.charCodeAt(0) - "a".charCodeAt(0)] += 1;
+			const sortedString = string.split("").sort().join();
+			if (!anagramMap[sortedString]) {
+				anagramMap[sortedString] = [];
 			}
-			const key = count.join(",");
-			if (!anagramMap[key]) {
-				anagramMap[key] = [];
-			}
-			anagramMap[key].push(string);
+			anagramMap[sortedString].push(string);
 		}
 		return Object.values(anagramMap);
 	}
