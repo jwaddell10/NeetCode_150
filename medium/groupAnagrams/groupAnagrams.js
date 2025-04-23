@@ -10,15 +10,6 @@ class Solution {
 	 */
 	groupAnagrams(strs) {
 		const anagramMap = {};
-
-		for (let string of strs) {
-			const sortedString = string.split("").sort().join();
-			if (!anagramMap[sortedString]) {
-				anagramMap[sortedString] = [];
-			}
-			anagramMap[sortedString].push(string);
-		}
-		return Object.values(anagramMap);
 	}
 }
 
