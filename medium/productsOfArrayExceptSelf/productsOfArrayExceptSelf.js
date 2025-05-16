@@ -5,18 +5,11 @@ class Solution {
 	 */
 	productExceptSelf(nums) {
         const n = nums.length;
-        const res = new Array(n);
-
-        for (let i = 0; i < nums.length; i++) {
-            let prod = 1;
-            for (let j = 0; j < n; j++) {
-                if (i !== j) {
-                    prod *= nums[j]
-                }
-            }
-            res[i] = prod;
+        const res = new Array(n).fill(1);
+        for (let i = 1; i < n; i++) {
+            res[i] = res[i - 1] * nums[i - 1];
         }
-        return res;
+        console.log(res)
 	}
 }
 

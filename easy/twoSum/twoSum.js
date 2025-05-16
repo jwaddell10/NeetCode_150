@@ -1,34 +1,37 @@
-/*Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
-
-You may assume that every input has exactly one pair of indices i and j that satisfy the condition.
-
-Return the answer with the smaller index first. */
-
 class Solution {
 	/**
 	 * @param {number[]} nums
 	 * @param {number} target
 	 * @return {number[]}
 	 */
-	twoSum(nums, target) {
-		const numsMap = new Map();
+	findPair(nums, target) {
+		let pairMap = new Map();
 
 		for (let i = 0; i < nums.length; i++) {
 			const diff = target - nums[i];
-			if (numsMap.has(diff)) {
-				return [numsMap.get(diff), i];
+			if (pairMap.has(diff)) {
+				return [diff, nums[i]];
 			}
-			numsMap.set(nums[i], i);
+			pairMap.set(nums[i], i);
 		}
-		return [];
+		return null;
 	}
 }
-
 
 // { 2: 0, 5: 1, }
 
 const test = new Solution();
+// Given a list of numbers,
+// find two numbers in the list that add up to ten
+// and return them. If no such pair exists, return null.
 
-console.log(test.twoSum([3, 4, 5, 6], 7)); // [0, 1]
-console.log(test.twoSum([4, 5, 6], 10)); // [0, 2]
-console.log(test.twoSum([2, 5, 10, 12], 15)); // [1, 2]
+// It is guaranteed that there is either exactly one pair of numbers
+// that satisfies the condition, or no pairs at all.
+
+// Test Cases:
+
+console.log(test.findPair([2, 3, 9, 7], 10)); // Output: [3, 7]
+console.log(test.findPair([10, 6, -1, 2], 10)); // null
+console.log(test.findPair([1, 2, 5, 6], 10)); // null
+console.log(test.findPair([1, 3, 6, 10, 4, 5], 10)); // [6, 4]
+console.log(test.findPair([4, -5, 3, 15, 5], 10)); // [-5, 15]
